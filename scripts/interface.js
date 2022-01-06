@@ -11,25 +11,41 @@ document.addEventListener('DOMContentLoaded', () => {
 function handleClick(event) {
     
     let square = event.target;
-    let position = square.id; 
+    let postion = square.id; 
 
-    handleMove(position);
-    updateSquares();
+    if (handleMove(postion)) {
+        updateSquare();
+
+        setTimeout(() => {
+            alert(" O jogo acabou - O vencedor foi" + playerTime );
+
+        },10);
+
+    };
+    updateSquare(postion);
 
 }
 
-function updateSquares() {
-
-    let squares = document.querySelectorAll(".square");
-
-    squares.forEach((square) => {
-        let position = square.id;
-        let symbol = board[position];
-
-
-        if (symbol != ''){
-            square.innerHTML = `<div class='${symbol}'></div>`
-        }
-    })
-    
+function updateSquare(postion){
+    let square = document.getElementById(postion.toString())
+    let symbol = board[postion];
+    square.innerHTML = `<div class='${symbol}'></div>`
 }
+
+//Reset game
+
+// function updateSquares(postion) {
+//     let square = document.querySelectorAll(".square");
+
+
+//     squares.forEach((square) =>{
+//         let position = square.id;
+//         let symbol = board[postion];
+
+//         if (symbol != "") {
+//             square.innerHTML = `<div class= '${symbol}'></div>`
+//         }
+//     })
+
+
+// }

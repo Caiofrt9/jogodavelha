@@ -15,15 +15,18 @@ function handleClick(event) {
 
     if (handleMove(postion)) {
         updateSquare();
+    };
+
+    if (isWin()) {
+        const namePlayer = playerTime == 0 ? 'Caio' : 'Lucas';
 
         setTimeout(() => {
-            alert(" O jogo acabou - O vencedor foi" + playerTime );
+            alert(" O jogo acabou - O vencedor foi " + namePlayer);
 
         },10);
+    }
 
-    };
     updateSquare(postion);
-
 }
 
 function updateSquare(postion){
